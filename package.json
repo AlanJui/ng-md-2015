@@ -1,0 +1,45 @@
+{
+  "name": "ng-md-2015",
+  "private": true,
+  "version": "0.0.1",
+  "description": "A starter project for AngularJS Material + ES2015",
+  "repository": "https://github.com/AlanJui/ng-md-2015",
+  "license": "MIT",
+  "scripts": {
+    "serve": "browser-sync start --files 'app/index.html, app/**/*.html, app/src/**/*.js' --server './app'",
+    "build": "jspm bundle app",
+    "dist": "jspm bundle-sfx app",
+    "dist-min": "jspm bundle-sfx --minify app"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "app",
+      "lib": "app/src"
+    },
+    "dependencies": {
+      "angular": "github:angular/bower-angular@^1.5.0",
+      "angular-animate": "github:angular/bower-angular-animate@^1.5.0",
+      "angular-aria": "github:angular/bower-angular-aria@^1.5.0",
+      "angular-material": "github:angular/bower-material@^1.0.6",
+      "angular-ui-router": "github:angular-ui/ui-router@^0.2.18",
+      "css": "github:systemjs/plugin-css@^0.1.6",
+      "json": "github:systemjs/plugin-json@^0.1.0",
+      "text": "github:systemjs/plugin-text@^0.0.2"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4",
+      "traceur": "github:jmcriffey/bower-traceur@0.0.91",
+      "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.91"
+    }
+  },
+  "devDependencies": {
+    "karma": "~0.10",
+    "protractor": "^1.1.1",
+    "http-server": "^0.6.1",
+    "bower": "^1.3.1",
+    "shelljs": "^0.2.6",
+    "karma-junit-reporter": "^0.2.2"
+  }
+}

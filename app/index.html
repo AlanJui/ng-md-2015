@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+  <head>
+    <meta charset="utf-8">
+    <title>JSPM 01</title>
+  </head>
+  <body>
+    <h1>Angular 1.x + ES2015 + JSPM Starter</h1>
+
+    <div ng-include="'src/home/view/home.html'"
+         layout="column" flex role="main">
+    </div>
+
+    <!-- <script src="build.js"></script> -->
+    <script src="./jspm_packages/system.js"></script>
+    <script src="./config.js"></script>
+    <script>
+      System
+        .import('app/boot')
+        .catch( console.error.bind(console) );
+    </script>
+
+  </body>
+</html>
