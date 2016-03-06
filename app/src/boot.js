@@ -1,19 +1,17 @@
-
 // Load the Angular Material CSS associated with ngMaterial
 // then load the main.css to provide overrides, etc.
 
-import 'angular-material/angular-material.css!'
-import 'assets/app.css!'
+import 'angular-material/angular-material.css!';
+import 'assets/app.css!';
 
 // Load Angular libraries
 
-import angular from 'angular'
-import material from 'angular-material'
-import uiRouter from 'angular-ui-router'
+import angular from 'angular';
+import material from 'angular-material';
 
 // Load custom application modules
 
-import main from 'app/main'
+import main from 'app/main';
 
 // Load loggers for injection and pre-angular debugging
 

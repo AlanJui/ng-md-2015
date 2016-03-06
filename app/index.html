@@ -2,7 +2,11 @@
 <html lang="zh_TW">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
     <title>JSPM 01</title>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
+    <link rel="stylesheet" href="assets/app.css">
 
     <style type="text/css">
       /**
@@ -15,38 +19,46 @@
   </head>
 
   <body layout="column" ng-cloak>
-    <md-toolbar>
-      <h1>Angular 1.x + ES2015 + JSPM Starter</h1>
-    </md-toolbar>
 
-    <div class="container" layout="row" flex>
-      <md-sidenav md-is-locked-open="true"
-                  class="md-whiteframe-4dp">
-        <md-list-item>
-          <md-button>
-            <md-icon md-svg-src="assets/svg/avatar-1.svg" class="avatar"></md-icon>
-            Thomas Burleson
-          </md-button>
+    <div layout="column" flex tabIndex="-1" role="main" >
+      <div flex layout="column">
 
-          <md-button>
-            <md-icon md-svg-src="assets/svg/avatar-4.svg" class="avatar"></md-icon>
-            Aaron Frost
-          </md-button>
-        </md-list-item>
-      </md-sidenav>
+        <!-- Container #1 (in wireframe) -->
+        <md-toolbar>
+          <h1>Angular 1.x + Angular Material + ES2015 + JSPM Starter</h1>
+        </md-toolbar>
 
-      <md-content id="content" flex>
-        <md-icon md-svg-src="assets/svg/avatar-1.svg" class="avatar"></md-icon>
-        <h2>Thomas Burleson</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </md-content>
+        <!-- Container #2 (in wireframe) -->
+        <div layout="row" flex ng-controller="UsersController as ul">
+
+          <!-- Container #3 (in wireframe) -->
+          <md-sidenav md-is-locked-open="true"
+                      class="md-whiteframe-4dp"
+                      layout="column"
+                      md-component-id="left">
+
+            <md-list layout="column">
+              <md-list-item ng-repeat="user in ul.users">
+                <md-button ng-click="ul.selectUser(user)">
+                  <md-icon md-svg-icon="{{user.avatar}}" class="avatar"></md-icon>
+                  {{user.name}}
+                </md-button>
+            </md-list>
+
+          </md-sidenav>
+
+          <!-- Container #4 (in wireframe) -->
+          <md-content id="content" flex>
+            <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
+            <h2>{{ul.selected.name}}</h2>
+            <p>
+              {{ul.selected.content}}
+            </p>
+          </md-content>
+        </div>
+      </div>
+
     </div>
-
-    <!-- <div ng-include="'src/home/view/home.html'"
-         layout="column" flex role="main">
-    </div> -->
 
     <!-- <script src="build.js"></script> -->
     <script src="./jspm_packages/system.js"></script>
