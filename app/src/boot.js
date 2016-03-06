@@ -29,12 +29,12 @@ angular
   .ready( function() {
 
     let appName = 'app';
-    let $log = new ExternalLogger();
+    let body = document.getElementsByTagName("body")[0];
 
+    let $log = new ExternalLogger();
     $log = $log.getInstance( "BOOTSTRAP" );
     $log.debug( "Initializing '{0}'", [ appName ] );
 
-    let body = document.getElementsByTagName("body")[0];
     let app  = angular
           .module( appName, [ material, main ] )
           .config( ['$provide', LogDecorator] );

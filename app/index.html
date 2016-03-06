@@ -3,19 +3,44 @@
   <head>
     <meta charset="utf-8">
     <title>JSPM 01</title>
+
+    <style type="text/css">
+      /**
+       * Hide when Angular is not yet loaded and initialized
+       */
+      [ng-cloak] {
+        display: none;
+      }
+    </style>
   </head>
-  <body layout="column">
+
+  <body layout="column" ng-cloak>
     <md-toolbar>
       <h1>Angular 1.x + ES2015 + JSPM Starter</h1>
     </md-toolbar>
 
     <div class="container" layout="row" flex>
-      <md-sidenav md-is-locked-open="true" class="lightblue">
-        Sidenav
+      <md-sidenav md-is-locked-open="true"
+                  class="md-whiteframe-4dp">
+        <md-list-item>
+          <md-button>
+            <md-icon md-svg-src="assets/svg/avatar-1.svg" class="avatar"></md-icon>
+            Thomas Burleson
+          </md-button>
+
+          <md-button>
+            <md-icon md-svg-src="assets/svg/avatar-4.svg" class="avatar"></md-icon>
+            Aaron Frost
+          </md-button>
+        </md-list-item>
       </md-sidenav>
 
-      <md-content id="content" class="lightgreen" flex>
-        Content
+      <md-content id="content" flex>
+        <md-icon md-svg-src="assets/svg/avatar-1.svg" class="avatar"></md-icon>
+        <h2>Thomas Burleson</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
       </md-content>
     </div>
 
