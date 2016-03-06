@@ -6,7 +6,7 @@
   "repository": "https://github.com/AlanJui/ng-md-2015",
   "license": "MIT",
   "scripts": {
-    "serve": "browser-sync start --files 'app/index.html, app/**/*.html, app/src/**/*.js' --server './app'",
+    "serve": "browser-sync start --files 'app/index.html, app/**/*.html, app/src/**/*.js, app/assets/app.css' --server './app'",
     "build": "jspm bundle app",
     "dist": "jspm bundle-sfx app",
     "dist-min": "jspm bundle-sfx --minify app"
