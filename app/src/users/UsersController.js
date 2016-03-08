@@ -1,7 +1,10 @@
+import UserSheetController from 'users/UserSheetController';
+
 class UsersController {
 
   /*@ngInject*/
   constructor(UsersService, $mdSidenav, $mdBottomSheet, $log) {
+    let self = this;
     this.$log = $log.getInstance('SessionController');
     this.$log.debug('instanceOf()');
 
@@ -10,17 +13,15 @@ class UsersController {
 
     this.selected     = null;
     this.users        = [ ];
-    this.toggleList   = this.toggleUsersList;
-    // this.selectUser   = this.selectUser;
-    // this.share        = this.share;
+    this.toggleList   = self.toggleUsersList;
 
     // Load all registered users
 
     UsersService
       .loadAll()
       .then( (users) => {
-        this.users    = [].concat(users);
-        this.selected = this.users[0];
+        self.users    = [].concat(users);
+        self.selected = self.users[0];
       });
   }
 
@@ -32,8 +33,10 @@ class UsersController {
    * Hide or Show the 'left' sideNav area
    */
   toggleUsersList() {
-    this.$log.debug( "toggleUsersList() ");
-    this.$mdSidenav('left').toggle();
+    let self = this;
+
+    self.$log.debug( "toggleUsersList() ");
+    self.$mdSidenav('left').toggle();
   }
 
   /**
@@ -41,52 +44,35 @@ class UsersController {
    * @param menuId
    */
   selectUser ( user ) {
-    this.$log.debug( "selectUser( {name} ) ", user);
+    let self = this;
 
-    this.selected = angular.isNumber(user) ? this.users[user] : user;
-    this.toggleList();
+    self.$log.debug( "selectUser( {name} ) ", user);
+
+    self.selected = angular.isNumber(user) ? self.users[user] : user;
+    self.toggleList();
   }
 
   /**
    * Show the bottom sheet
    */
   share($event) {
-    $log.debug( "contactUser()");
+    let self = this;
 
-    let user = this.selected;
+    self.$log.debug( "contactUser()");
 
-    $mdBottomSheet.show({
-      parent: angular.element(document.getElementById('content')),
-      templateUrl: '/src/users/view/contactSheet.html',
-      controller: [ '$mdBottomSheet', '$log', UserSheetController],
-      controllerAs: "vm",
-      bindToController : true,
-      targetEvent: $event
-    }).then(function(clickedItem) {
-      $log.debug( clickedItem.name + ' clicked!');
-    });
-
-    /**
-     * Bottom Sheet controller for the Avatar Actions
-     */
-    function UserSheetController( $mdBottomSheet, $log ) {
-
-      $log = $log.getInstance( "UserSheetController" );
-      $log.debug( "instanceOf() ");
-
-      this.user = user;
-      this.items = [
-        { name: 'Phone'       , icon: 'phone'       , icon_url: 'assets/svg/phone.svg'},
-        { name: 'Twitter'     , icon: 'twitter'     , icon_url: 'assets/svg/twitter.svg'},
-        { name: 'Google+'     , icon: 'google_plus' , icon_url: 'assets/svg/google_plus.svg'},
-        { name: 'Hangout'     , icon: 'hangouts'    , icon_url: 'assets/svg/hangouts.svg'}
-      ];
-      this.performAction = function(action) {
-        $log.debug( "makeContactWith( {name} )", action);
-        $mdBottomSheet.hide(action);
-      };
-
-    }
+    self.$mdBottomSheet
+      .show({
+        parent: angular.element(document.getElementById('content')),
+        templateUrl: '/src/users/view/contactSheet.html',
+        locals: {user: self.selected},
+        controller: [ '$mdBottomSheet', '$log', UserSheetController],
+        controllerAs: 'vm',
+        bindToController : true,
+        targetEvent: $event
+      })
+      .then((clickedItem) => {
+        self.$log.debug(`${clickedItem.name} clicked!`);
+      });
   }
 }
 
