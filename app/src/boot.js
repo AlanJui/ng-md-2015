@@ -34,7 +34,13 @@ angular
     $log.debug( "Initializing '{0}'", [ appName ] );
 
     let app  = angular
-          .module( appName, [ material, main ] )
+          // .module( appName, [ material, main ] )
+          .module( appName, [ 'ngMaterial', main ] )
+          .config( ['$mdThemingProvider', ($mdThemingProvider) => {
+            $mdThemingProvider.theme('default')
+              .primaryPalette('brown')
+              .accentPalette('red');
+          }] )
           .config( ['$provide', LogDecorator] );
 
     angular.bootstrap( body, [ app.name ], { strictDi: false })

@@ -20,26 +20,34 @@
 
   <body layout="column" ng-cloak>
 
-    <div layout="column" flex tabIndex="-1" role="main" >
+    <div layout="column" flex tabIndex="-1" role="main"
+         ng-controller="UsersController as ul">
       <div flex layout="column">
 
         <!-- Container #1 (in wireframe) -->
-        <md-toolbar>
-          <h1>Angular 1.x + Angular Material + ES2015 + JSPM Starter</h1>
+        <md-toolbar layout="row" class="md-whiteframe-z2">
+          <md-button class="menu" hide-gt-sm
+                     ng-click="ul.toggleList()"
+                     aria-label="Show User List">
+            <md-icon md-svg-icon="menu"></md-icon>
+          </md-button>
+
+          <h1>AngularJS + Angular Material + ES2015 + JSPM Starter</h1>
         </md-toolbar>
 
         <!-- Container #2 (in wireframe) -->
-        <div layout="row" flex ng-controller="UsersController as ul">
+        <div layout="row" flex>
 
           <!-- Container #3 (in wireframe) -->
-          <md-sidenav md-is-locked-open="true"
-                      class="md-whiteframe-4dp"
+          <md-sidenav md-is-locked-open="$mdMedia('gt-sm')"
+                      class="md-whiteframe-z2"
                       layout="column"
                       md-component-id="left">
 
             <md-list layout="column">
               <md-list-item ng-repeat="user in ul.users">
-                <md-button ng-click="ul.selectUser(user)">
+                <md-button ng-click="ul.selectUser(user)"
+                           ng-class="{'selected': user === ul.selected}">
                   <md-icon md-svg-icon="{{user.avatar}}" class="avatar"></md-icon>
                   {{user.name}}
                 </md-button>
