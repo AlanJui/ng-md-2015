@@ -6,15 +6,19 @@
   "repository": "https://github.com/AlanJui/ng-md-2015",
   "license": "MIT",
   "scripts": {
+    "start": "browser-sync start --server './_build'",
     "serve": "browser-sync start --files 'app/index.html, app/**/*.html, app/config.js, app/src/**/*.js, app/assets/app.css' --server './app'",
-    "build": "jspm bundle app",
-    "dist": "jspm bundle-sfx app",
-    "dist-min": "jspm bundle-sfx --minify app"
+    "build": "jspm bundle app/main --inject",
+    "dist": "jspm bundle-sfx app/main _build/build.js",
+    "dist-min": "jspm bundle-sfx --minify app/main",
+    "gh-pages": "git subtree push --prefix _build origin gh-pages"
   },
   "jspm": {
     "directories": {
-      "baseURL": "app"
+      "baseURL": "app",
+      "lib": "app"
     },
+    "configFile": "app/config.js",
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.5.0",
       "angular-animate": "github:angular/bower-angular-animate@^1.5.0",
