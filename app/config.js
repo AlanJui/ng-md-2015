@@ -16,6 +16,43 @@ System.config({
     "users/*": "src/users/*.js",
     "home/*": "src/home/*.js"
   },
+  shim: {
+    "angular": {
+      "deps": [],
+      "exports": "angular"
+    },
+    "angular-animate": {
+      "deps": [
+        "angular"
+      ]
+    },
+    "angular-aria": {
+      "deps": [
+        "angular"
+      ]
+    },
+    "angular-material": {
+      "deps": [
+        "angular"
+      ]
+    }
+  },
+  bundles: {
+    "build.js": [
+      "app/main",
+      "utils/LogDecorator",
+      "users/Users",
+      "users/UsersController",
+      "utils/supplant",
+      "users/UsersDataService",
+      "npm:babel-runtime@5.8.35/helpers/class-call-check.js",
+      "npm:babel-runtime@5.8.35/helpers/create-class.js",
+      "users/UserSheetController",
+      "npm:babel-runtime@5.8.35/core-js/object/define-property.js",
+      "npm:core-js@1.2.6/library/fn/object/define-property.js",
+      "npm:core-js@1.2.6/library/modules/$.js"
+    ]
+  },
 
   map: {
     "angular": "github:angular/bower-angular@1.5.0",
