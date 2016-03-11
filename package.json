@@ -6,19 +6,19 @@
   "repository": "https://github.com/AlanJui/ng-md-2015",
   "license": "MIT",
   "scripts": {
-    "start": "browser-sync start --server './_build'",
+    "start": "browser-sync start --files 'app/index.html, app/**/*.html, app/config.js, app/src/**/*.js, app/assets/app.css' --server './app'",
     "serve": "browser-sync start --files 'app/index.html, app/**/*.html, app/config.js, app/src/**/*.js, app/assets/app.css' --server './app'",
-    "build": "jspm bundle app/main --inject",
-    "dist": "jspm bundle-sfx app/main _build/build.js",
-    "dist-min": "jspm bundle-sfx --minify app/main",
+    "bundle": "jspm bundle app/boot && mv app/build.js* _build/",
+    "build": "jspm bundle app/boot _build/build.js",
+    "dist": "jspm bundle-sfx app/boot _build/build.js",
+    "dist-min": "jspm bundle-sfx --minify app/boot",
+    "serve-dist": "browser-sync start --server './_build'",
     "gh-pages": "git subtree push --prefix _build origin gh-pages"
   },
   "jspm": {
     "directories": {
-      "baseURL": "app",
-      "lib": "app"
+      "baseURL": "app"
     },
-    "configFile": "app/config.js",
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.5.0",
       "angular-animate": "github:angular/bower-angular-animate@^1.5.0",
@@ -31,13 +31,14 @@
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "clean-css": "npm:clean-css@^3.4.10",
       "core-js": "npm:core-js@^1.1.4"
     }
   },
   "devDependencies": {
     "bower": "^1.3.1",
     "browser-sync": "^2.11.1",
-    "jspm": "^0.16.30",
+    "jspm": "^0.16.31",
     "karma": "~0.10",
     "karma-junit-reporter": "^0.2.2",
     "protractor": "^1.1.1",

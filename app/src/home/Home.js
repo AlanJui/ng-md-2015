@@ -1,9 +1,10 @@
+// Constants
+
 const MODULE_NAME = 'home';
 
 // Load the custom app ES2015 modules
 
 import HomeController from 'home/HomeController';
-
 import { ExternalLogger } from 'utils/LogDecorator';
 
 let $log = new ExternalLogger();

@@ -1,3 +1,5 @@
+// Constants
+
 const URL_AVATAR_ICONS = 'assets/svg/avatars.svg';
 const URL_ICON_MENU    = 'assets/svg/menu.svg';
 const URL_ICON_SHARE   = 'assets/svg/share.svg';
